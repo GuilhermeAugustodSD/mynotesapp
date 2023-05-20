@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export default function Notes(note) {
   const [heart, setHeart] = useState("heart-o");
-  
+
   function changeHeartIcon() {
     if (heart == "heart-o"){
       setHeart("heart")

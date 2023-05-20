@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, ScrollView } from 'react-native';
 import Notes from '../../Components/Notes';
 import { api } from '../../services/api';
 import { useState, useEffect } from 'react';
@@ -39,21 +39,23 @@ export default function Home() {
     <View style={Styles.container}>
       <StatusBar barStyle="light-content" />
       <Header />
-      <View style={Styles.buttons}>
-        <Text style={Styles.button}>Links populares</Text>
-        <Text style={Styles.button}>Links Favoritos</Text>
-      </View>
-      <View title="Minhas Notas" style={Styles.notes}>
-        { 
-          notes?.map(note => (
-            <Notes 
-              key={String(note.id)}
-              data={note}
-            />
+      <ScrollView>
+        <View style={Styles.buttons}>
+          <Text style={Styles.button}>Links populares</Text>
+          <Text style={Styles.button}>Links Favoritos</Text>
+        </View>
+        <View title="Minhas Notas" style={Styles.notes}>
+          { 
+            notes?.map(note => (
+              <Notes 
+                key={String(note.id)}
+                data={note}
+              />
+              )
             )
-          )
-        }
-      </View>
+          }
+        </View>
+      </ScrollView>
       
     </View>
   );

@@ -8,7 +8,6 @@
     width: 100%;
     background-color: #232129;
     flex: 1;
-    padding: 0 20px;
     height: 100%;
     overflow-y: scroll;
 }
@@ -19,6 +18,8 @@
     display: flex;
     flex-direction: row;
     gap: 18px;
+    padding: 0 20px;
+
 }
 
 .button {
@@ -39,6 +40,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    overflow-y: auto;
+    overflow-y: scroll;
     height: 100%;
 }
