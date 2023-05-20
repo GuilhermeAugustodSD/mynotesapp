@@ -1,0 +1,42 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 60px;
+    border-bottom: 10px solid #716B82;
+}
+
+.image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.words {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.welcome {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: #999591;
+}
+
+.name {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #F4EDE8;
+}
