@@ -13,6 +13,8 @@ export default function Notes(note) {
       setHeart("heart-o")
     }
   }
+
+  
   return (
     <View style={AppStyles.container} >
       <View className="title" style={AppStyles.header}>
@@ -35,6 +37,8 @@ export default function Notes(note) {
       </View>
 
       <Text style={AppStyles.p}>{note.data.description}</Text>
+
+    
     </View>
 
   );

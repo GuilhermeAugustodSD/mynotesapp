@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button, ScrollView } from 'react-native';
+import { Text, View, Button, ScrollView, Alert } from 'react-native';
 import Notes from '../../Components/Notes';
 import { api } from '../../services/api';
 import { useState, useEffect } from 'react';
@@ -37,12 +37,20 @@ export default function Home() {
 
   return (
     <View style={Styles.container}>
-      <StatusBar barStyle="light-content" />
       <Header />
       <ScrollView>
         <View style={Styles.buttons}>
           <Text style={Styles.button}>Links populares</Text>
-          <Text style={Styles.button}>Links Favoritos</Text>
+          <Text 
+            style={Styles.button}
+          >
+            Links Favoritos
+          </Text>
+
+          {/* <Button
+            style={Styles.button}
+            title="Links Favoritos"
+          />  jeito certo, dps de criar a rota de favoritos*/}
         </View>
         <View title="Minhas Notas" style={Styles.notes}>
           { 

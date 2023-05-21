@@ -1,0 +1,26 @@
+.container {
+    background-color: #232129;
+    flex: 1;
+    padding: 0 20px;
+}
+
+.containerInput {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 11px;
+    background-color: #FFF;
+    height: 40px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    background-color: #FF9000;
+}
