@@ -1,5 +1,5 @@
 import { Image, Text, View } from "react-native";
-import logo from "../../../assets/icon.png";
+import logo from "../../../assets/avatar_placeholder.png";
 import Styles from "./styles.scss";
 
 export default function Header({name, avatar}) {
