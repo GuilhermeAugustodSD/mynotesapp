@@ -5,24 +5,23 @@ import { api } from '../../services/api';
 import { useState, useEffect } from 'react';
 import Styles from "./styles.scss";
 import Header from '../../Components/Header';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from "../../hook/auth";
 
 
-export default function Home() {
+export default function Home({ navigation}) {
   
   const [notes, setNotes] = useState();
-  const [user, setUser] = useState();
+  const [data, setData] = useState({});
 
 
-  useEffect(() => {
-    async function fetchUser(){
-      const response = await api.get("/users");
-      setUser(response.data)
-    }
   
-    fetchUser();
-  }, [])
+  function handleSignOut(){
+    AsyncStorage.removeItem("@rocketnotes:user");
+    AsyncStorage.removeItem("@rocketnotes:token");
+    navigation.navigate('Login');
+  }
 
-  console.log(user);
 
   useEffect(() => {
     async function fetchNotes(){
@@ -33,11 +32,41 @@ export default function Home() {
     fetchNotes();
   }, [])
 
+  useEffect(() => {
+    
+    const getUserData = async () => {
+      try {
+        const user = await AsyncStorage.getItem("@rocketnotes:user");
+        const token = await AsyncStorage.getItem("@rocketnotes:token");
+        if (token && user) {
+          api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+          setData({
+            token,
+            user: JSON.parse(user),
+          });
+
+        }
+      } catch (error) {
+        console.error("Erro ao obter os dados do usuário:", error);
+      }
+    };
+
+    getUserData();
+  }, []);
 
 
   return (
     <View style={Styles.container}>
-      <Header />
+      <Header 
+        name={ data &&
+          data.user?.name}
+        avatar={data.user?.avatar}
+      />
+      <Button 
+        title="Sair"
+        onPress={handleSignOut}
+      />
       <ScrollView>
         <View style={Styles.buttons}>
           <Text style={Styles.button}>Links populares</Text>

@@ -3,10 +3,9 @@ import Styles from "./styles.scss";
 import { useState, useEffect } from "react";
 import { api } from '../../services/api';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AuthContext } from '../../hook/auth';
 
+export default function Login({navigation}) {
 
-export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [data, setData] = useState({});
@@ -22,6 +21,12 @@ export default function Login() {
       console.log(password);
     };
 
+    const handlePress = () => {
+      navigation.navigate('Register');
+    };
+
+   
+
     const handleLogin = async () => {
       try {
         const response = await api.post("/sessions", {email, password});
@@ -36,6 +41,8 @@ export default function Login() {
         setData({ user, token });
 
         
+        navigation.navigate('Home');
+
       } catch (error) {
         if (error.response) {
           Alert.alert(error.response.data.message);
@@ -50,7 +57,7 @@ export default function Login() {
         try {
           const user = await AsyncStorage.getItem("@rocketnotes:user");
           const token = await AsyncStorage.getItem("@rocketnotes:token");
-  
+          console.log(user);
           if (token && user) {
             api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   
@@ -58,6 +65,7 @@ export default function Login() {
               token,
               user: JSON.parse(user),
             });
+
           }
         } catch (error) {
           console.error("Erro ao obter os dados do usuário:", error);
@@ -66,48 +74,14 @@ export default function Login() {
   
       getUserData();
     }, []);
-  
-    function signOut() {
-      AsyncStorage.removeItem("@rocketnotes:user");
-      AsyncStorage.removeItem("@rocketnotes:token");
-  
-      setData({});
-    }
 
-    async function updateProfile({ user, avatarFile }) {
-      if (avatarFile) {
-        const fileUpdateForm = new FormData();
   
-        fileUpdateForm.append("avatar", avatarFile);
-  
-        const response = await api.patch("/users/avatar", fileUpdateForm);
-  
-        user.avatar = response.data.avatar;
-      }
-  
-      try {
-        await api.put("/users", user);
-        await AsyncStorage.setItem("@rocketnotes:user", JSON.stringify(user));
-  
-        setData({ user, token: data.token });
-        alert("Perfil atualizado!");
-      } catch (error) {
-        if (error.response) {
-          alert(error.response.data.message);
-        } else {
-          alert("Não foi possível atualizar o perfil!");
-        }
-      }
-    }
+    
+
+    
 
     return (
-      <AuthContext.Provider
-        value={{
-          updateProfile,
-          user: data.user,
-          signOut
-        }}
-      >
+      <>
 
         <View style={Styles.container}>
             <View style={Styles.containerInput}>
@@ -130,7 +104,9 @@ export default function Login() {
                   onPress={handleLogin}
                 />
             </View>
+
+            <Button title="Cadastro" onPress={handlePress} />
         </View>
-      </AuthContext.Provider>
+      </>
     );
 }

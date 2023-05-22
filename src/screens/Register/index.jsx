@@ -17,7 +17,7 @@ export default function Register() {
         return alert("Preencha todos os campos!");
       }
 
-      api.post("/users", { nome, email, password })
+      api.post("/users", { name: nome, email, password })
       .then(() => {
         Alert.alert("Usuário Cadastrado com sucesso!");
       })
@@ -52,8 +52,8 @@ export default function Register() {
                 <TextInput
                   placeholder="Digite seu nome"
                   style={Styles.input}
-                  value={nome}
                   onChangeText={handleNome}
+                  value={nome}
                 />
                 <TextInput
                   placeholder="Digite seu e-mail"
