@@ -1,16 +1,37 @@
 .container {
     background-color: #232129;
     flex: 1;
+    padding: 0 20px;
+}
+.h1 {
+    color: #FF9000;
+    font-size: 40px;
+    text-align: center;
+
 }
 
 .containerInput {
     margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .input {
+    padding: 10px;
+    // border-radius: 11px;
     background-color: #FFF;
     height: 40px;    
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #232129;
+}
+
+.input::placeholder {
+    color: #232129;
+}
+
+.buttonEnviar {
+    background-color: #FF9000;
 }

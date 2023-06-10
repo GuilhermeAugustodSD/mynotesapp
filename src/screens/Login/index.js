@@ -1,4 +1,4 @@
-import { View, TextInput, Button, Alert } from 'react-native';
+import { View, TextInput, Button, Alert, Text } from 'react-native';
 import Styles from "./styles.scss";
 import { useState, useEffect } from "react";
 import { api } from '../../services/api';
@@ -31,7 +31,7 @@ export default function Login({navigation}) {
       try {
         const response = await api.post("/sessions", {email, password});
         console.log(response.data);
-        const { user, token } = response.data /* está certo até aqui,  */
+        const { user, token } = response.data;
 
         await AsyncStorage.setItem("@rocketnotes:user", JSON.stringify(user));
         await AsyncStorage.setItem("@rocketnotes:token", token);
@@ -39,6 +39,7 @@ export default function Login({navigation}) {
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
         setData({ user, token });
+        console.log(data);
 
         
         navigation.navigate('Home');
@@ -85,6 +86,7 @@ export default function Login({navigation}) {
 
         <View style={Styles.container}>
             <View style={Styles.containerInput}>
+                <Text style={Styles.h1}>Login</Text>
                 <TextInput
                   placeholder="Digite seu e-mail"
                   style={Styles.input}
@@ -100,6 +102,7 @@ export default function Login({navigation}) {
                 />
 
                 <Button
+                  style={Styles.buttonEnviar}
                   title="Enviar"
                   onPress={handleLogin}
                 />

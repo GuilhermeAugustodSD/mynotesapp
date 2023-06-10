@@ -1,15 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import { Text, View, Button, ScrollView, Alert } from 'react-native';
 import Notes from '../../Components/Notes';
-import { api } from '../../services/api';
+import { api } from '../../services/api.js';
 import { useState, useEffect } from 'react';
 import Styles from "./styles.scss";
 import Header from '../../Components/Header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useAuth } from "../../hook/auth";
+import { useAuth } from "../../hook/auth.js";
 
 
-export default function Home({ navigation}) {
+export default function Home({navigation}) {
   
   const [notes, setNotes] = useState();
   const [data, setData] = useState({});

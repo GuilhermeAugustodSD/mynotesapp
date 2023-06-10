@@ -4,7 +4,7 @@ import { useState } from "react";
 import { api } from '../../services/api';
 
 
-export default function Register() {
+export default function Register({ navigation }) {
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
@@ -20,6 +20,7 @@ export default function Register() {
       api.post("/users", { name: nome, email, password })
       .then(() => {
         Alert.alert("Usuário Cadastrado com sucesso!");
+        navigation.navigate('Login');
       })
       .catch(error => {
         if(error.response){

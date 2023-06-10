@@ -16,7 +16,7 @@
 .h1 {
     color: #FFF;
     font-weight: 700;
-    font-family: RobotoSlab_700Bold; /* arrumar a fonte */
+    // font-family: RobotoSlab_700Bold; /* arrumar a fonte */
     font-size: 20px;
 }
 
@@ -25,7 +25,7 @@
     flex-direction: row;
     gap: 10px !important;
     margin-top: 12px;
-    border-radius: 5px;
+    // border-radius: 5px;
 }
 
 .tags:empty {
@@ -37,9 +37,9 @@
     background-color: #FF9000;
     color: #232129;
     padding: 5px;
-    border-radius: 5px;
+    // border-radius: 5px;
     text-transform: uppercase;
-    font-family: 'Roboto';
+    // font-family: 'Roboto';
     font-weight: 700;
     font-size: 12px;
     line-height: 14px;
@@ -47,7 +47,7 @@
 }
 
 .p {
-    font-family: 'Roboto';
+    // font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
