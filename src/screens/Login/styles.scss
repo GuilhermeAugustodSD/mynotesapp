@@ -7,6 +7,7 @@
     color: #FF9000;
     font-size: 40px;
     text-align: center;
+    margin-bottom: 20px;
 
 }
 
@@ -14,7 +15,9 @@
     margin-top: 200px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px !important;
+
+   
 }
 
 .input {
@@ -26,12 +29,15 @@
     justify-content: center;
     align-items: center;
     color: #232129;
+    margin-bottom: 20px;
 }
 
 .input::placeholder {
     color: #232129;
 }
 
-.buttonEnviar {
+.cadastro {
     background-color: #FF9000;
+    margin-bottom: 20px;
 }
+

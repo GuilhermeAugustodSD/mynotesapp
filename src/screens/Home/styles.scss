@@ -12,6 +12,12 @@
     overflow-y: scroll;
 }
 
+.exitIcon {
+    padding: 0 20px;
+    text-align: right;
+    margin-top: 10px;
+}
+
 .buttons {
     width: 100%;
     margin-top: 20px;
@@ -28,6 +34,7 @@
     color: #FF9000;
     padding: 4px 16px;
     // border-radius: 11px;
+    margin-right: 12px;
 }
 
 .button:active {

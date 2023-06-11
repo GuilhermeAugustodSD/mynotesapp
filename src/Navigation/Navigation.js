@@ -11,9 +11,47 @@ function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen 
+          name="Login" 
+          component={Login} 
+          options={{
+            headerStyle: {
+              backgroundColor: '#232129', // Define a cor de fundo do cabeçalho
+            },
+            headerTintColor: '#FFFFFF', // Define a cor do texto e ícones do cabeçalho
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+
+        <Stack.Screen 
+          name="Register" 
+          component={Register} 
+          options={{
+            headerStyle: {
+              backgroundColor: '#232129', // Define a cor de fundo do cabeçalho
+            },
+            headerTintColor: '#FFFFFF', // Define a cor do texto e ícones do cabeçalho
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="Home" 
+          component={Home} 
+          options={{
+            headerStyle: {
+              backgroundColor: '#232129', // Define a cor de fundo do cabeçalho
+            },
+            headerTintColor: '#FFFFFF', // Define a cor do texto e ícones do cabeçalho
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerLeft: null, // Remove o botão de voltar
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

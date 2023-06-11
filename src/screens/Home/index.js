@@ -6,12 +6,15 @@ import Styles from "./styles.scss";
 import Header from '../../Components/Header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from "../../hook/auth.js";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 
 export default function Home({navigation}) {
   
   const [notes, setNotes] = useState();
   const [data, setData] = useState({});
+  const [tipoData, setTipoData] = useState("publicas");
 
 
   
@@ -24,12 +27,18 @@ export default function Home({navigation}) {
 
   useEffect(() => {
     async function fetchNotes(){
-      const response = await api.get("/notes/allNotes");
-      setNotes(response.data);
+      if (tipoData == "publicas") {
+        const response = await api.get("/notes/allNotes");
+        setNotes(response.data);
+      }else {
+        const response = await api.get("/notes/allNotesFav");
+        setNotes(response.data);
+        
+      }
     }
   
     fetchNotes();
-  }, [])
+  }, [tipoData])
 
   useEffect(() => {
     
@@ -54,37 +63,52 @@ export default function Home({navigation}) {
     getUserData();
   }, []);
 
+  const handleTipoDataPublicas = () => {
+      setTipoData("publicas")
+  };
+
+  const handleTipoDataFavoritas = () => {
+    setTipoData("favorita");
+};
+
+ 
+
 
   return (
     <View style={Styles.container}>
+      <Icon 
+        name="exit-to-app" 
+        size={24} 
+        color="#FF9000" 
+        onPress={handleSignOut}
+        style={Styles.exitIcon}
+      />
       <Header 
         name={ data &&
           data.user?.name}
         avatar={data.user?.avatar}
       />
-      <Button 
-        title="Sair"
-        onPress={handleSignOut}
-      />
       <ScrollView>
         <View style={Styles.buttons}>
-          <Text style={Styles.button}>Links populares</Text>
-          <Text 
+          <Button 
+            title="Links populares"
             style={Styles.button}
-          >
-            Links Favoritos
-          </Text>
-
-          {/* <Button
-            style={Styles.button}
+            onPress={handleTipoDataPublicas}
+          />
+          <Button 
             title="Links Favoritos"
-          />  jeito certo, dps de criar a rota de favoritos*/}
+            style={Styles.button}
+            onPress={handleTipoDataFavoritas}
+          />
+          
+         
         </View>
         <View title="Minhas Notas" style={Styles.notes}>
           { 
             notes?.map(note => (
               <Notes 
                 key={String(note.id)}
+                idNotes={note.id}
                 data={note}
               />
               )

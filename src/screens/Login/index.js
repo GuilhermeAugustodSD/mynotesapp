@@ -13,12 +13,10 @@ export default function Login({navigation}) {
 
     const handleEmail = (text) => {
       setEmail(text);
-      console.log(email);
     };
 
     const handlePassword = (text) => {
       setPassword(text);
-      console.log(password);
     };
 
     const handlePress = () => {
@@ -30,7 +28,6 @@ export default function Login({navigation}) {
     const handleLogin = async () => {
       try {
         const response = await api.post("/sessions", {email, password});
-        console.log(response.data);
         const { user, token } = response.data;
 
         await AsyncStorage.setItem("@rocketnotes:user", JSON.stringify(user));
@@ -39,7 +36,6 @@ export default function Login({navigation}) {
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
         setData({ user, token });
-        console.log(data);
 
         
         navigation.navigate('Home');
@@ -58,7 +54,6 @@ export default function Login({navigation}) {
         try {
           const user = await AsyncStorage.getItem("@rocketnotes:user");
           const token = await AsyncStorage.getItem("@rocketnotes:token");
-          console.log(user);
           if (token && user) {
             api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   
@@ -102,13 +97,13 @@ export default function Login({navigation}) {
                 />
 
                 <Button
-                  style={Styles.buttonEnviar}
+                  style={Styles.enviar}
                   title="Enviar"
                   onPress={handleLogin}
                 />
             </View>
 
-            <Button title="Cadastro" onPress={handlePress} />
+            <Button title="Cadastro" onPress={handlePress} style={Styles.cadastro}/>
         </View>
       </>
     );

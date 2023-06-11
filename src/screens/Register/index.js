@@ -48,8 +48,8 @@ export default function Register({ navigation }) {
 
     return (
         <View style={Styles.container}>
-          <Text>Register</Text>
             <View style={Styles.containerInput}>
+                <Text style={Styles.h1}>Register</Text>
                 <TextInput
                   placeholder="Digite seu nome"
                   style={Styles.input}

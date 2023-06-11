@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar, Platform } from 'react-native';
 import Navigation from './src/Navigation/Navigation';
 
 // import Home from './src/screens/Home';
@@ -17,6 +17,7 @@ export default function App() {
  
   return (
     <>
+      <StatusBar barStyle="light-content"/>
       <Navigation />
     </>
   );
