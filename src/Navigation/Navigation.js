@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
 import Home from '../screens/Home';
+import Detalhes from '../screens/Detalhes';
 
 const Stack = createStackNavigator();
 
@@ -43,13 +44,27 @@ function Navigation() {
           component={Home} 
           options={{
             headerStyle: {
-              backgroundColor: '#232129', // Define a cor de fundo do cabeçalho
+              backgroundColor: '#232129', 
             },
-            headerTintColor: '#FFFFFF', // Define a cor do texto e ícones do cabeçalho
+            headerTintColor: '#FFFFFF', 
             headerTitleStyle: {
               fontWeight: 'bold',
             },
-            headerLeft: null, // Remove o botão de voltar
+            headerLeft: null, 
+          }}
+        />
+        <Stack.Screen 
+          name="Detalhes" 
+          component={Detalhes} 
+          options={{
+            headerStyle: {
+              backgroundColor: '#232129', 
+            },
+            headerTintColor: '#FFFFFF', 
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerLeft: null, 
           }}
         />
       </Stack.Navigator>

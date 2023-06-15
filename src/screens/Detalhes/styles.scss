@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    background-color: #232129;
+    flex: 1;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.h1 {
+    color: #FFF;
+    font-size: 20px;
+}
+
+.description {
+    color: #FFF;
+    font-size: 20px;
+}
+
+.tags {
+    color: #FFF;
+}
+
+.link {
+    color: #FFF;
+}
+
+.checklist {
+    color: #FFF;
+}
+
+// .buttons {
+//     width: 100%;
+//     margin-top: 20px;
+//     display: flex;
+//     flex-direction: row;
+//     gap: 18px;
+//     padding: 0 20px;
+
+// }
+
+// .button {
+//     border: 2px solid #FF9000;
+//     width: auto;
+//     color: #FF9000;
+//     padding: 4px 16px;
+//     // border-radius: 11px;
+// }
+
+// .button:active {
+//     background-color: #FF9000;
+//     color: #FFF;
+// }
+
+// .notes {
+//     margin-top: 40px;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 20px;
+//     overflow-y: scroll;
+//     height: 100%;
+// }

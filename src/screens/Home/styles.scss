@@ -10,6 +10,7 @@
     flex: 1;
     height: 100%;
     overflow-y: scroll;
+
 }
 
 .exitIcon {
@@ -29,18 +30,19 @@
 }
 
 .button {
-    border: 2px solid #FF9000;
+    // border: 2px solid #FF9000;
     width: auto;
     color: #FF9000;
     padding: 4px 16px;
     // border-radius: 11px;
     margin-right: 12px;
+    background: #FF9000;
 }
 
-.button:active {
-    background-color: #FF9000;
-    color: #FFF;
-}
+// .button:active {
+//     background-color: #FF9000;
+//     color: #FFF;
+// }
 
 .notes {
     margin-top: 40px;

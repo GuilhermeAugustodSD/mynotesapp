@@ -24,16 +24,22 @@ export default function Home({navigation}) {
     navigation.navigate('Login');
   }
 
+  // function handleDetails(){
+  //   navigation.navigate('Detalhes');
+  // }
+
+ 
+
 
   useEffect(() => {
     async function fetchNotes(){
+      setNotes(null);
       if (tipoData == "publicas") {
         const response = await api.get("/notes/allNotes");
         setNotes(response.data);
       }else {
         const response = await api.get("/notes/allNotesFav");
         setNotes(response.data);
-        
       }
     }
   
@@ -69,7 +75,7 @@ export default function Home({navigation}) {
 
   const handleTipoDataFavoritas = () => {
     setTipoData("favorita");
-};
+  };
 
  
 
@@ -107,9 +113,11 @@ export default function Home({navigation}) {
           { 
             notes?.map(note => (
               <Notes 
-                key={String(note.id)}
+                key={tipoData == "publicas" ? String(note.id) : note.noteFilter && note.noteFilter.description}
                 idNotes={note.id}
                 data={note}
+                tipo={tipoData}
+                navigation={navigation}
               />
               )
             )
